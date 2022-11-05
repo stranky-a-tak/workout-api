@@ -1,10 +1,13 @@
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const Card = (props) => {
+const Card = () => {
+  const navigation = useNavigation();
+
   return (
     <TouchableOpacity
       style={styles.card}
-      onPress={() => props.navigation.navigate("Show")}
+      onPress={() => navigation.navigate("Show")}
     >
       <View style={styles.cardHeadingContainer}>
         <Text style={styles.cardHeading}>Upper</Text>
@@ -20,7 +23,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     height: 100,
     paddingVertical: 15,
-    paddingHorizontal: 12,
+    paddingHorizontal: 20,
     marginBottom: 30,
   },
   cardHeadingContainer: {
@@ -30,13 +33,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   cardHeading: {
-    fontSize: 22,
-    fontWeight: 500,
+    fontSize: 26,
     color: "#ffffff",
   },
   cardTimeStamp: {
-    fontSize: 18,
-    fontWeight: 500,
+    fontSize: 20,
     color: "#ffffff",
   },
 });

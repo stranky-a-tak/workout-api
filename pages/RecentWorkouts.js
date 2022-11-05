@@ -1,17 +1,20 @@
-import { View, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import CardContainer from "../components/recent-workouts/CardContainer";
 
-const RecentWorkouts = ({ navigation }) => {
+const RecentWorkouts = () => {
   return (
-    <View style={styles.container}>
-      <CardContainer navigation={navigation} />
-    </View>
+    <ScrollView style={styles.container}>
+      <CardContainer />
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 35,
+    backgroundColor: "#000000",
+    paddingTop: 20,
+    paddingBottom: 50,
+    paddingHorizontal: 15,
   },
 });
 
