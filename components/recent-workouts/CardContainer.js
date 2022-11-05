@@ -1,14 +1,17 @@
-import { StyleSheet, View } from "react-native"
-import Card from "./Card"
+import { View } from "react-native";
+import Card from "./Card";
 
-const CardContainer = () => {
+const CardContainer = (props) => {
   return (
-      <View>
-          <Card/>
-          <Card/>
-          <Card/>
-      </View>
-  )
-}
+    <View>
+      <Card navigation={props.navigation} />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </View>
+  );
+};
 
-export default CardContainer
+export default CardContainer;

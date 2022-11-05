@@ -1,43 +1,44 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const Card = () => {
+const Card = (props) => {
   return (
-    <View style={styles.card}>
-      <TouchableOpacity>
-        <View style={styles.cardHeadingContainer}>
-          <Text style={styles.cardHeading}>Upper</Text>
-          <Text style={styles.cardTimeStamp}>25.01.2022</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
-  )
-}
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => props.navigation.navigate("Show")}
+    >
+      <View style={styles.cardHeadingContainer}>
+        <Text style={styles.cardHeading}>Upper</Text>
+        <Text style={styles.cardTimeStamp}>25.01.2022</Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#D6D6B1',
-    borderRadius: '0.8rem',
-    width: '85%',
-    paddingVertical: '1.2rem',
-    paddingHorizontal: '1rem',
-    marginBottom: '1.75rem'
+    backgroundColor: "#212121",
+    borderRadius: 15,
+    height: 100,
+    paddingVertical: 15,
+    paddingHorizontal: 12,
+    marginBottom: 30,
   },
   cardHeadingContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between'
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   cardHeading: {
-    fontSize: '1.1rem',
-    fontWeight: '500',
-    color: '#070C16',
+    fontSize: 22,
+    fontWeight: 500,
+    color: "#ffffff",
   },
   cardTimeStamp: {
-    fontSize: '0.9rem',
-    fontWeight: '500',
-    color: '#070C16',
-  }
+    fontSize: 18,
+    fontWeight: 500,
+    color: "#ffffff",
+  },
 });
 
 export default Card;
