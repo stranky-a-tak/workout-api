@@ -1,8 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import moment from "moment";
 
-const Card = () => {
+const Card = (props) => {
   const navigation = useNavigation();
+  const workout = props.workout;
 
   return (
     <TouchableOpacity
@@ -10,8 +12,10 @@ const Card = () => {
       onPress={() => navigation.navigate("Show")}
     >
       <View style={styles.cardHeadingContainer}>
-        <Text style={styles.cardHeading}>Upper</Text>
-        <Text style={styles.cardTimeStamp}>25.01.2022</Text>
+        <Text style={styles.cardHeading}>{workout.name}</Text>
+        <Text style={styles.cardTimeStamp}>
+          {moment(workout.created_at).format("MMMM D")}
+        </Text>
       </View>
     </TouchableOpacity>
   );
