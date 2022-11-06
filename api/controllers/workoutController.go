@@ -13,8 +13,11 @@ func WorkoutIndex(c *gin.Context) {
 
 	var workouts []models.Workout
 
-	initializers.DB.Where("user_id = ?", id).Find(&workouts)
+	initializers.DB.Where("user_id = ?", id).Order("created_at desc").Find(&workouts)
+	filters := generateFilters(id)
+
 	c.JSON(200, gin.H{
 		"workouts": workouts,
+		"filters":  filters,
 	})
 }
