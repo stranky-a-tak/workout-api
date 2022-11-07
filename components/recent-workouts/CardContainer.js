@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { View, ActivityIndicator, StyleSheet } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import Card from "./Card";
-import FilterCard from "./FilterCard";
+import FilterContainer from "./Filters";
 import NoRecentWorkouts from "./NoRecentWorkouts";
 
 const CardContainer = () => {
@@ -25,13 +25,8 @@ const CardContainer = () => {
 
   return (
     <View>
-      {isLoading === false && filters.length !== 0 && (
-        <View style={styles.filterContainer}>
-          {filters.map((filter) => (
-            <FilterCard key={filter.name} filter={filter} />
-          ))}
-        </View>
-      )}
+      <FilterContainer isLoading={isLoading} filters={filters} />
+
       {isLoading ? (
         <ActivityIndicator />
       ) : (
@@ -42,14 +37,5 @@ const CardContainer = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  filterContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    marginBottom: 40,
-  },
-});
 
 export default CardContainer;

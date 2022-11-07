@@ -9,7 +9,7 @@ const Card = (props) => {
   return (
     <TouchableOpacity
       style={styles.card}
-      onPress={() => navigation.navigate("Show")}
+      onPress={() => navigation.navigate("Show", workout)}
     >
       <View style={styles.cardHeadingContainer}>
         <Text style={styles.cardHeading}>{workout.name}</Text>

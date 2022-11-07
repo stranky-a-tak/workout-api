@@ -1,11 +1,12 @@
 import { useLayoutEffect } from "react";
 import { ScrollView, Text, StyleSheet } from "react-native";
 
-const ShowWorkout = ({ navigation }) => {
-  //Dynamic header title
+const ShowWorkout = ({ route, navigation }) => {
+  const workout = route.params;
+
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: "Upper",
+      title: workout.name,
     });
   });
 
