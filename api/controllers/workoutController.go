@@ -21,3 +21,17 @@ func WorkoutIndex(c *gin.Context) {
 		"filters":  filters,
 	})
 }
+
+func WorkoutFilter(c *gin.Context) {
+	headers.SetReponseHeaders(c)
+	id := c.Param("id")
+	filter := c.Param("name")
+
+	var workouts []models.Workout
+
+	initializers.DB.Where("user_id = ? AND name = ?", id, filter).Find(&workouts)
+
+	c.JSON(200, gin.H{
+		"workouts": workouts,
+	})
+}

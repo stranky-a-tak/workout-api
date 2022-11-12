@@ -1,11 +1,15 @@
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const FilterCard = (props) => {
-  const filter = props.filter;
+const FilterCard = ({ filter, setWorkouts, setIsFiltered }) => {
+  const filterByName = async (name) => {
+    //TODO: User
+    const response = await fetch(
+      `http://127.0.0.1:3000/workouts/user/1/filter/${name}`
+    );
 
-  const filterByName = (name) => {
-    //TODO: Implement filtering
-    console.log(name);
+    const body = await response.json();
+    setWorkouts(body.workouts);
+    setIsFiltered(true);
   };
 
   return (

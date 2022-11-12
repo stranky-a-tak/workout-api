@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import Card from "./Card";
-import FilterContainer from "./Filters";
+import FilterContainer from "./FilterContainer";
 import NoRecentWorkouts from "./NoRecentWorkouts";
 
 const CardContainer = () => {
@@ -21,11 +21,17 @@ const CardContainer = () => {
 
   useEffect(() => {
     fetchWorkouts();
-  }, [JSON.stringify(workouts)]);
+  }, []);
 
   return (
     <View>
-      <FilterContainer isLoading={isLoading} filters={filters} />
+      <FilterContainer
+        isLoading={isLoading}
+        filters={filters}
+        setWorkouts={setWorkouts}
+        workouts={workouts}
+        fetchWorkouts={fetchWorkouts}
+      />
 
       {isLoading ? (
         <ActivityIndicator />
