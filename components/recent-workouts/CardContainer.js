@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import Card from "./Card";
-import FilterContainer from "./FilterContainer";
+import FilterContainer from "./filters/FilterContainer";
 import NoRecentWorkouts from "./NoRecentWorkouts";
 
 const CardContainer = () => {

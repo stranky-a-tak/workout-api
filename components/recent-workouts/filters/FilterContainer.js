@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, StyleSheet } from "react-native";
-import FilterAllButton from "../FilterAllButton";
+import FilterAllButton from "../../FilterAllButton";
 import FilterCard from "./FilterCard";
 
 const FilterContainer = ({
