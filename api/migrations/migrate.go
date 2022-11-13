@@ -11,5 +11,10 @@ func init() {
 }
 
 func main() {
-	initializers.DB.AutoMigrate(&models.Workout{})
+	initializers.DB.AutoMigrate(
+		&models.Workout{},
+		&models.Exercise{},
+		&models.Rep{},
+		&models.Set{},
+	)
 }

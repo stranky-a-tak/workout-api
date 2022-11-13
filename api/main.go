@@ -13,8 +13,9 @@ func init() {
 
 func main() {
 	r := gin.Default()
-	r.GET("/workouts/user/:id", controllers.WorkoutIndex)
+	r.GET("workouts/user/:id", controllers.WorkoutIndex)
 	r.GET("workouts/user/:id/filter/:name", controllers.WorkoutFilter)
+	r.GET("workout/:workoutId/user/:userId", controllers.WorkoutShow)
 
 	r.Run()
 }

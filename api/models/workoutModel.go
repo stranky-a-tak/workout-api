@@ -6,11 +6,36 @@ import (
 	"gorm.io/gorm"
 )
 
-type Workout struct {
+type Model struct {
 	ID        uint            `gorm:"primaryKey;type:int(10)" json:"id,omitempty"`
-	CreatedAt *time.Time      `gorm:"type:timestamp default:current_timestamp" json:"created_at,omitempty"`
-	UpdatedAt *time.Time      `gorm:"type:timestamp default:current_timestamp" json:"updated_at,omitempty"`
+	CreatedAt *time.Time      `gorm:"type:timestamp" json:"created_at,omitempty"`
+	UpdatedAt *time.Time      `gorm:"type:timestamp" json:"updated_at,omitempty"`
 	DeletedAt *gorm.DeletedAt `gorm:"index" json:"deleted_at,omitempty"`
-	UserId    uint            `gorm:"type:int(10)" json:"user_id,omitempty"`
-	Name      string          `gorm:"type:varchar(255)" json:"name,omitempty"`
+}
+
+type Workout struct {
+	Model
+	Name      string     `gorm:"type:varchar(255)" json:"name,omitempty"`
+	UserID    uint       `gorm:"type:int(10)" json:"user_id,omitempty"`
+	Exercises []Exercise `json:"exercises"`
+}
+
+type Exercise struct {
+	Model
+	WorkoutID uint   `gorm:"type:int(10)" json:"workout_id,omitempty"`
+	Name      string `gorm:"type:varchar(255)" json:"name,omitempty"`
+	Reps      []Rep  `json:"reps"`
+	Sets      []Set  `json:"sets"`
+}
+
+type Rep struct {
+	Model
+	ExerciseID uint `gorm:"type:int(10)" json:"excercise_id,omitempty"`
+	Value      uint `gorm:"type:int(10)" json:"value,omitempty"`
+}
+
+type Set struct {
+	Model
+	ExerciseID uint `gorm:"type:int(10)" json:"excercise_id,omitempty"`
+	Value      uint `gorm:"type:int(10)" json:"value,omitempty"`
 }

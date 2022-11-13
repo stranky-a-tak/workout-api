@@ -11,9 +11,9 @@ const CardContainer = () => {
 
   const fetchWorkouts = async () => {
     //TODO:Dynamic user
-    const reponse = await fetch("http://127.0.0.1:3000/workouts/user/1");
+    const response = await fetch("http://127.0.0.1:3000/workouts/user/1");
 
-    const body = await reponse.json();
+    const body = await response.json();
     setWorkouts(body.workouts);
     setFilters(body.filters);
     setIsLoading(false);

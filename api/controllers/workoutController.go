@@ -22,6 +22,26 @@ func WorkoutIndex(c *gin.Context) {
 	})
 }
 
+func WorkoutShow(c *gin.Context) {
+	headers.SetReponseHeaders(c)
+	workoutId := c.Param("workoutId")
+	userId := c.Param("userId")
+
+	var workout models.Workout
+
+	err := initializers.DB.Model(&models.Workout{}).
+		Preload("Exercises").Preload("Exercises.Sets").Preload("Exercises.Reps").
+		Find(&workout, "id = ? AND user_id = ?", workoutId, userId).Error
+
+	if err != nil {
+		c.Error(err)
+	}
+
+	c.JSON(200, gin.H{
+		"workout": workout,
+	})
+}
+
 func WorkoutFilter(c *gin.Context) {
 	headers.SetReponseHeaders(c)
 	id := c.Param("id")
