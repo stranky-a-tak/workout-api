@@ -30,7 +30,7 @@ func WorkoutShow(c *gin.Context) {
 	var workout models.Workout
 
 	err := initializers.DB.Model(&models.Workout{}).
-		Preload("Exercises").Preload("Exercises.Sets").Preload("Exercises.Reps").
+		Preload("Exercises").Preload("Exercises.Sets").Preload("Exercises.Sets.Rep").
 		Find(&workout, "id = ? AND user_id = ?", workoutId, userId).Error
 
 	if err != nil {

@@ -24,18 +24,19 @@ type Exercise struct {
 	Model
 	WorkoutID uint   `gorm:"type:int(10)" json:"workout_id,omitempty"`
 	Name      string `gorm:"type:varchar(255)" json:"name,omitempty"`
-	Reps      []Rep  `json:"reps"`
 	Sets      []Set  `json:"sets"`
 }
 
 type Rep struct {
 	Model
-	ExerciseID uint `gorm:"type:int(10)" json:"excercise_id,omitempty"`
-	Value      uint `gorm:"type:int(10)" json:"value,omitempty"`
+	SetID uint `gorm:"type:int(10)" json:"set_id,omitempty"`
+	Value uint `gorm:"type:int(10)" json:"value,omitempty"`
 }
 
 type Set struct {
 	Model
 	ExerciseID uint `gorm:"type:int(10)" json:"excercise_id,omitempty"`
 	Value      uint `gorm:"type:int(10)" json:"value,omitempty"`
+	Weight     uint `gorm:"type:int(10)" json:"weight,omitempty"`
+	Rep        Rep  `json:"rep"`
 }
