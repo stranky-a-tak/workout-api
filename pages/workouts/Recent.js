@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet } from "react-native";
-import CardContainer from "../components/recent-workouts/CardContainer";
+import CardContainer from "../../components/recent-workouts/CardContainer";
 
-const RecentWorkouts = () => {
+const Recent = () => {
   return (
     <ScrollView style={styles.container}>
       <CardContainer />
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RecentWorkouts;
+export default Recent;

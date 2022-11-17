@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";
-import WorkoutsContainer from "../components/show-workout/WorkoutsContainer";
+import WorkoutsContainer from "../../components/show-workout/WorkoutsContainer";
 
-const ShowWorkout = ({ route, navigation }) => {
+const Show = ({ route, navigation }) => {
   const workout = route.params;
   const [workoutExercises, setWokroutExercises] = useState([]);
 
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ShowWorkout;
+export default Show;

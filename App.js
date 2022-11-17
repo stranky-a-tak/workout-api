@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import RecentWorkouts from "./pages/RecentWorkouts";
-import ShowWorkout from "./pages/ShowWorkout";
+import Recent from "./pages/workouts/Recent";
+import Show from "./pages/workouts/Show";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,9 +26,9 @@ export default function App() {
         <Stack.Screen
           name="Home"
           options={{ title: "Recent Workouts" }}
-          component={RecentWorkouts}
+          component={Recent}
         />
-        <Stack.Screen name="Show" component={ShowWorkout} />
+        <Stack.Screen name="Show" component={Show} />
       </Stack.Navigator>
     </NavigationContainer>
   );

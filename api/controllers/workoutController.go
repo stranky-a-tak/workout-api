@@ -49,7 +49,7 @@ func WorkoutFilter(c *gin.Context) {
 
 	var workouts []models.Workout
 
-	initializers.DB.Where("user_id = ? AND name = ?", id, filter).Find(&workouts)
+	initializers.DB.Where("user_id = ? AND name = ?", id, filter).Find(&workouts).Limit(5)
 
 	c.JSON(200, gin.H{
 		"workouts": workouts,
