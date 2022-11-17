@@ -1,14 +1,15 @@
 package controllers
 
 import (
-	"github.com/MiroslavZaprazny/workout-tracker/api/headers"
 	"github.com/MiroslavZaprazny/workout-tracker/api/initializers"
 	"github.com/MiroslavZaprazny/workout-tracker/api/models"
+	"github.com/MiroslavZaprazny/workout-tracker/api/requests"
+	"github.com/MiroslavZaprazny/workout-tracker/api/response"
 	"github.com/gin-gonic/gin"
 )
 
 func WorkoutIndex(c *gin.Context) {
-	headers.SetReponseHeaders(c)
+	response.SetReponseHeaders(c)
 	id := c.Param("id")
 
 	var workouts []models.Workout
@@ -23,7 +24,7 @@ func WorkoutIndex(c *gin.Context) {
 }
 
 func WorkoutShow(c *gin.Context) {
-	headers.SetReponseHeaders(c)
+	response.SetReponseHeaders(c)
 	workoutId := c.Param("workoutId")
 	userId := c.Param("userId")
 
@@ -43,7 +44,7 @@ func WorkoutShow(c *gin.Context) {
 }
 
 func WorkoutFilter(c *gin.Context) {
-	headers.SetReponseHeaders(c)
+	response.SetReponseHeaders(c)
 	id := c.Param("id")
 	filter := c.Param("name")
 
@@ -53,5 +54,15 @@ func WorkoutFilter(c *gin.Context) {
 
 	c.JSON(200, gin.H{
 		"workouts": workouts,
+	})
+}
+
+func WorkoutUpdate(c *gin.Context) {
+	response.SetReponseHeaders(c)
+
+	workout := requests.HandleUpdateWorkoutRequest(c)
+
+	c.JSON(200, gin.H{
+		"workout": workout,
 	})
 }
