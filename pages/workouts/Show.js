@@ -23,7 +23,10 @@ const Show = ({ route, navigation }) => {
 
   return (
     <ScrollView style={styles.container}>
-      <WorkoutsContainer workoutExercises={workoutExercises} />
+      <WorkoutsContainer
+        workoutExercises={workoutExercises}
+        navigation={navigation}
+      />
     </ScrollView>
   );
 };

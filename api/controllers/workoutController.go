@@ -60,9 +60,9 @@ func WorkoutFilter(c *gin.Context) {
 func WorkoutUpdate(c *gin.Context) {
 	response.SetReponseHeaders(c)
 
-	workout := requests.HandleUpdateWorkoutRequest(c)
+	requests.HandleUpdateWorkoutRequest(c)
 
 	c.JSON(200, gin.H{
-		"workout": workout,
+		"message": "You have successfully updated your workout!",
 	})
 }

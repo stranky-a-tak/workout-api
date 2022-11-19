@@ -16,7 +16,7 @@ type updateWorkoutRequest struct {
 	Value      uint `json:"value"`
 }
 
-func HandleUpdateWorkoutRequest(c *gin.Context) models.Workout {
+func HandleUpdateWorkoutRequest(c *gin.Context) {
 	var rb updateWorkoutRequest
 
 	err := c.BindJSON(&rb)
@@ -25,12 +25,12 @@ func HandleUpdateWorkoutRequest(c *gin.Context) models.Workout {
 		panic(err)
 	}
 
-	if rb.ExerciseID != 0 && rb.Weight != 0 {
+	if rb.SetID != 0 && rb.Weight != 0 {
 		//je to set a jedna sa o zmenu vahy
 		var set models.Set
 		initializers.DB.First(&set, rb.SetID)
 		initializers.DB.Model(&set).Update("weight", rb.Weight)
-	} else if rb.ExerciseID != 0 && rb.Weight == 0 {
+	} else if rb.SetID != 0 && rb.Weight == 0 {
 		//je to set a jedna sa o zmenu value setu
 		var set models.Set
 		initializers.DB.First(&set, rb.SetID)
@@ -41,12 +41,4 @@ func HandleUpdateWorkoutRequest(c *gin.Context) models.Workout {
 		initializers.DB.First(&rep, rb.RepID)
 		initializers.DB.Model(&rep).Update("value", rb.Value)
 	}
-
-	var workout models.Workout
-
-	initializers.DB.Model(&models.Workout{}).
-		Preload("Exercises").Preload("Exercises.Sets").Preload("Exercises.Sets.Rep").
-		Find(&workout, "id = ? AND user_id = ?", rb.WorkoutID, rb.UserId)
-
-	return workout
 }
