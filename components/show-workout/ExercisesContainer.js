@@ -1,12 +1,12 @@
-import WorkoutCard from "./WorkoutCard";
+import ExerciseCard from "./ExerciseCard";
 
-const WorkoutsContainer = ({ workoutExercises, navigation }) => {
+const ExercisesContainer = ({ workoutExercises, navigation }) => {
   return (
     <>
       {workoutExercises &&
         workoutExercises.map((exercise) => {
           return (
-            <WorkoutCard
+            <ExerciseCard
               key={exercise.id}
               exercise={exercise}
               navigation={navigation}
@@ -17,4 +17,4 @@ const WorkoutsContainer = ({ workoutExercises, navigation }) => {
   );
 };
 
-export default WorkoutsContainer;
+export default ExercisesContainer;

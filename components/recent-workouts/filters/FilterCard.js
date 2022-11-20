@@ -1,4 +1,5 @@
-import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import styles from "../../../styles/styles";
 
 const FilterCard = ({ filter, setWorkouts, setIsFiltered }) => {
   const filterByName = async (name) => {
@@ -14,25 +15,21 @@ const FilterCard = ({ filter, setWorkouts, setIsFiltered }) => {
 
   return (
     <TouchableOpacity
-      style={styles.container}
+      style={style.filterContainer}
       onPress={() => {
         filterByName(filter.name);
       }}
     >
-      <Text style={styles.text}>{filter.name}</Text>
+      <Text style={styles.textWhite}>{filter.name}</Text>
     </TouchableOpacity>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
+const style = StyleSheet.create({
+  filterContainer: {
     backgroundColor: "#212121",
     padding: 15,
     borderRadius: 40,
-  },
-
-  text: {
-    color: "white",
   },
 });
 

@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, StyleSheet } from "react-native";
 import moment from "moment";
+import styles from "../../styles/styles";
 
 const Card = (props) => {
   const navigation = useNavigation();
@@ -8,7 +9,7 @@ const Card = (props) => {
 
   return (
     <TouchableOpacity
-      style={styles.card}
+      style={style.workoutCard}
       onPress={() => navigation.navigate("Show", workout)}
     >
       <View style={styles.cardHeadingContainer}>
@@ -21,28 +22,14 @@ const Card = (props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  card: {
+const style = StyleSheet.create({
+  workoutCard: {
     backgroundColor: "#212121",
     borderRadius: 15,
     height: 100,
     paddingVertical: 15,
     paddingHorizontal: 20,
     marginBottom: 30,
-  },
-  cardHeadingContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  cardHeading: {
-    fontSize: 26,
-    color: "#ffffff",
-  },
-  cardTimeStamp: {
-    fontSize: 20,
-    color: "#ffffff",
   },
 });
 

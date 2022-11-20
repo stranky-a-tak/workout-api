@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text } from "react-native";
 import Input from "./Input";
+import styles from "../../styles/styles";
 
-const WorkoutCard = ({ exercise }) => {
+const ExerciseCard = ({ exercise }) => {
   //TODO: Make the heading as a input as well?
   const saveChanges = async (e, defaultValue, id, isRep, isWeight) => {
     if (e.target.value == defaultValue) {
@@ -17,8 +18,6 @@ const WorkoutCard = ({ exercise }) => {
     const repId = isRep === true ? id : 0;
     const setId = isRep === false ? id : 0;
     const weight = parseInt(isWeight === true ? e.target.value : 0);
-
-    console.log(value, repId, setId, weight);
 
     //TODO: Do something with the response
     const response = await fetch(
@@ -40,7 +39,7 @@ const WorkoutCard = ({ exercise }) => {
   };
 
   return (
-    <View style={styles.card}>
+    <View style={styles.exerciseCard}>
       <Text style={styles.heading}>{exercise.name}</Text>
       {exercise.sets.map((set) => {
         return (
@@ -84,32 +83,4 @@ const WorkoutCard = ({ exercise }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: "#212121",
-    borderRadius: 15,
-    minHeight: 100,
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    marginBottom: 30,
-  },
-
-  workoutRepsContainer: {
-    display: "flex",
-    flexDirection: "row",
-    marginTop: 15,
-  },
-
-  textWhite: {
-    color: "#ffffffff",
-    fontSize: 18,
-  },
-
-  heading: {
-    color: "#ffffffff",
-    fontSize: 22,
-    fontWeight: "bold",
-  },
-});
-
-export default WorkoutCard;
+export default ExerciseCard;

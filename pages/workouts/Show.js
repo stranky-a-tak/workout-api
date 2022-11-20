@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { ScrollView, StyleSheet } from "react-native";
-import WorkoutsContainer from "../../components/show-workout/WorkoutsContainer";
+import { ScrollView } from "react-native";
+import ExercisesContainer from "../../components/show-workout/ExercisesContainer";
+import styles from "../../styles/styles";
 
 const Show = ({ route, navigation }) => {
   const workout = route.params;
@@ -8,7 +9,9 @@ const Show = ({ route, navigation }) => {
 
   const fetchWorkoutAdditionalData = async () => {
     //TODO:Dynamic user
-    const response = await fetch("http://127.0.0.1:3000/workout/1/user/1");
+    const response = await fetch(
+      `http://127.0.0.1:3000/workout/${workout.id}/user/1`
+    );
 
     const body = await response.json();
     setWokroutExercises(body.workout.exercises);
@@ -23,21 +26,12 @@ const Show = ({ route, navigation }) => {
 
   return (
     <ScrollView style={styles.container}>
-      <WorkoutsContainer
+      <ExercisesContainer
         workoutExercises={workoutExercises}
         navigation={navigation}
       />
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#000000",
-    paddingTop: 20,
-    paddingBottom: 50,
-    paddingHorizontal: 15,
-  },
-});
 
 export default Show;

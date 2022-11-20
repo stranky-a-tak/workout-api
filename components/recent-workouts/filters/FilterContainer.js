@@ -12,6 +12,7 @@ const FilterContainer = ({
   const [isfiltered, setIsFiltered] = useState(false);
   const cancelFilters = () => {
     fetchWorkouts();
+    setIsFiltered(false);
   };
 
   return (
