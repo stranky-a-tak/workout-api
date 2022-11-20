@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
+    flex: "1",
     backgroundColor: "#000000",
     paddingTop: 20,
     paddingBottom: 50,
@@ -56,5 +57,17 @@ export default StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 20,
     marginBottom: 30,
+  },
+  input: {
+    width: 300,
+    borderWidth: 2,
+    borderColor: "#ffffff",
+    paddingVertical: 15,
+    paddingHorizontal: 8,
+    borderRadius: 15,
+  },
+  label: {
+    color: "#ffffff",
+    marginBottom: 8,
   },
 });
