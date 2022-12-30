@@ -1,6 +1,3 @@
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
-import styles from "../../../styles/styles";
-
 const FilterCard = ({ filter, setWorkouts, setIsFiltered }) => {
   const filterByName = async (name) => {
     //TODO: User
@@ -14,23 +11,13 @@ const FilterCard = ({ filter, setWorkouts, setIsFiltered }) => {
   };
 
   return (
-    <TouchableOpacity
-      style={style.filterContainer}
+    <button
       onPress={() => {
         filterByName(filter.name);
       }}
     >
-      <Text style={styles.textWhite}>{filter.name}</Text>
-    </TouchableOpacity>
+      <p>{filter.name}</p>
+    </button>
   );
 };
-
-const style = StyleSheet.create({
-  filterContainer: {
-    backgroundColor: "#212121",
-    padding: 15,
-    borderRadius: 40,
-  },
-});
-
 export default FilterCard;

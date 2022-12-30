@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Home from './pages/workouts/Home';
+import Recent from './pages/workouts/Recent';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,16 +15,15 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>About</div>,
+    element: <Home />
   },
   {
-    path: "about",
-    element: <div>jako</div>,
+    path: "recent",
+    element: <Recent />
   },
 ]);
 root.render(
   <React.StrictMode>
-    <App />
       <RouterProvider router={router} />
   </React.StrictMode>
 );

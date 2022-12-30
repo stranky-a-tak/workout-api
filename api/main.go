@@ -17,6 +17,7 @@ func main() {
 	r.GET("workouts/user/:id/filter/:name", controllers.WorkoutFilter)
 	r.GET("workout/:workoutId/user/:userId", controllers.WorkoutShow)
 	r.POST("workout/:workoutId/user/:userId", controllers.WorkoutUpdate)
+	r.POST("register", controllers.Register)
 
 	r.Run()
 }

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { View, ActivityIndicator } from "react-native";
 import Card from "./Card";
 import FilterContainer from "./filters/FilterContainer";
 import NoRecentWorkouts from "./NoRecentWorkouts";
@@ -24,7 +23,7 @@ const CardContainer = () => {
   }, []);
 
   return (
-    <View>
+    <div>
       <FilterContainer
         isLoading={isLoading}
         filters={filters}
@@ -34,13 +33,13 @@ const CardContainer = () => {
       />
 
       {isLoading ? (
-        <ActivityIndicator />
+          <p>loading...</p>
       ) : (
         workouts.map((workout) => <Card key={workout.id} workout={workout} />)
       )}
 
       {isLoading === false && workouts.length === 0 && <NoRecentWorkouts />}
-    </View>
+    </div>
   );
 };
 

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { View, StyleSheet } from "react-native";
 import FilterAllButton from "../../FilterAllButton";
 import FilterCard from "./FilterCard";
 
@@ -18,7 +17,7 @@ const FilterContainer = ({
   return (
     <>
       {isLoading === false && filters.length !== 0 && (
-        <View style={styles.filterContainer}>
+        <div>
           {isfiltered === true && (
             <FilterAllButton cancelFilters={cancelFilters} />
           )}
@@ -31,19 +30,10 @@ const FilterContainer = ({
               setIsFiltered={setIsFiltered}
             />
           ))}
-        </View>
+        </div>
       )}
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  filterContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    marginBottom: 40,
-  },
-});
 
 export default FilterContainer;
