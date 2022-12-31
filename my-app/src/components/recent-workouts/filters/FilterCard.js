@@ -11,8 +11,8 @@ const FilterCard = ({ filter, setWorkouts, setIsFiltered }) => {
   };
 
   return (
-    <button
-      onPress={() => {
+    <button className="bg-gray-700 rounded-full p-3"
+      onClick={() => {
         filterByName(filter.name);
       }}
     >

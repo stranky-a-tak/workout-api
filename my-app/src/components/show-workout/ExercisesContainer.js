@@ -1,6 +1,6 @@
 import ExerciseCard from "./ExerciseCard";
 
-const ExercisesContainer = ({ workoutExercises, navigation }) => {
+const ExercisesContainer = ({ workoutExercises }) => {
   return (
     <>
       {workoutExercises &&
@@ -9,7 +9,6 @@ const ExercisesContainer = ({ workoutExercises, navigation }) => {
             <ExerciseCard
               key={exercise.id}
               exercise={exercise}
-              navigation={navigation}
             />
           );
         })}

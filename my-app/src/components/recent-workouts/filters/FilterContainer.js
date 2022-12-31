@@ -17,7 +17,7 @@ const FilterContainer = ({
   return (
     <>
       {isLoading === false && filters.length !== 0 && (
-        <div>
+        <div className="flex justify-center items-center mb-5 space-x-4">
           {isfiltered === true && (
             <FilterAllButton cancelFilters={cancelFilters} />
           )}

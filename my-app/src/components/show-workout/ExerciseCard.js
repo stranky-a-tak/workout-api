@@ -1,6 +1,4 @@
-import { View, Text } from "react-native";
 import Input from "./Input";
-import styles from "../../styles/styles";
 
 const ExerciseCard = ({ exercise }) => {
   //TODO: Make the heading as a input as well?
@@ -39,23 +37,23 @@ const ExerciseCard = ({ exercise }) => {
   };
 
   return (
-    <View style={styles.exerciseCard}>
-      <Text style={styles.heading}>{exercise.name}</Text>
+    <div className="exercise-card">
+      <div className="text-lg text-white">{exercise.name}</div>
       {exercise.sets.map((set) => {
         return (
-          <View key={set.id} style={styles.workoutRepsContainer}>
-            <View
-              style={{ marginRight: 25, display: "flex", flexDirection: "row" }}
+          <div key={set.id} className="workout-reps-container">
+            <div
+              className="flex mr-5"
             >
               <Input
                 defaultValue={set.value}
                 saveChanges={saveChanges}
                 id={set.id}
               />
-              <Text style={styles.textWhite}>Sets</Text>
-            </View>
-            <View
-              style={{ marginRight: 25, display: "flex", flexDirection: "row" }}
+              <p className="text-white">Sets</p>
+            </div>
+            <div
+              className="flex mr-5"
             >
               <Input
                 defaultValue={set.rep.value}
@@ -63,10 +61,10 @@ const ExerciseCard = ({ exercise }) => {
                 id={set.rep.id}
                 isRep={true}
               />
-              <Text style={styles.textWhite}>Reps</Text>
-            </View>
-            <View
-              style={{ marginLeft: 35, display: "flex", flexDirection: "row" }}
+              <p className="text-white">Reps</p>
+            </div>
+            <div
+              className="flex mr-5"
             >
               <Input
                 defaultValue={set.weight}
@@ -74,12 +72,12 @@ const ExerciseCard = ({ exercise }) => {
                 id={set.id}
                 isWeight={true}
               />
-              <Text style={styles.textWhite}>kg</Text>
-            </View>
-          </View>
+              <p className="text-white">Kg</p>
+            </div>
+          </div>
         );
       })}
-    </View>
+    </div>
   );
 };
 

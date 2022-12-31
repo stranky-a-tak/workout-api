@@ -32,11 +32,13 @@ const CardContainer = () => {
         fetchWorkouts={fetchWorkouts}
       />
 
-      {isLoading ? (
-          <p>loading...</p>
-      ) : (
-        workouts.map((workout) => <Card key={workout.id} workout={workout} />)
-      )}
+      <div className="flex flex-col justify-center items-center space-y-6">
+        {isLoading ? (
+            <p>loading...</p>
+        ) : (
+          workouts.map((workout) => <Card key={workout.id} workout={workout} />)
+        )}
+      </div>
 
       {isLoading === false && workouts.length === 0 && <NoRecentWorkouts />}
     </div>

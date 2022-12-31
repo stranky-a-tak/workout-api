@@ -1,19 +1,20 @@
 import moment from "moment";
+import { useNavigate } from 'react-router-dom';
 
 const Card = (props) => {
-  // const navigation = useNavigation();
-  // const workout = props.workout;
+  const navigate = useNavigate();
+  const workout = props.workout;
 
+  
   return (
-    <div
-      // onPress={() => navigation.navigate("Show", workout)}
+    <button className="flex justify-between items-center bg-gray-600 rounded-3xl py-5 px-8 w-1/2"
+      onClick={() => navigate(`/show/${workout.id}`)}
     >
-        <p>upper</p>
+        <p>{workout.name}</p>
         <p>
-          12
-          {/*moment(25-01-1999).format("MMMM D") */}
+          { moment(workout.created_at).format("MMMM D") }
         </p>
-    </div>
+    </button>
   );
 };
 

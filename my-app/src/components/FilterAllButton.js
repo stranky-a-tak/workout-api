@@ -1,6 +1,6 @@
 const FilterAllButton = ({ cancelFilters }) => {
   return (
-    <button onPress={cancelFilters}>
+    <button onClick={cancelFilters}>
       <p>All</p>
     </button>
   );
