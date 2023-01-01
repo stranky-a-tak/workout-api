@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FilterAllButton from "../../FilterAllButton";
+import FilterAllButton from "./FilterAllButton";
 import FilterCard from "./FilterCard";
 
 const FilterContainer = ({
