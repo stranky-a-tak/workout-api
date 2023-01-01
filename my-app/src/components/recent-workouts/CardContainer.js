@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import FilterContainer from "./filters/FilterContainer";
 import NoRecentWorkouts from "./NoRecentWorkouts";
+import LoadingSpinner from "../LoadingSpinner";
 
 const CardContainer = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -34,7 +35,9 @@ const CardContainer = () => {
 
       <div className="flex flex-col justify-center items-center space-y-6">
         {isLoading ? (
-            <p>loading...</p>
+          <div className="container-center">
+            <LoadingSpinner />
+          </div>
         ) : (
           workouts.map((workout) => <Card key={workout.id} workout={workout} />)
         )}

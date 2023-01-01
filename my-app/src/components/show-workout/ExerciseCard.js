@@ -42,9 +42,7 @@ const ExerciseCard = ({ exercise }) => {
       {exercise.sets.map((set) => {
         return (
           <div key={set.id} className="workout-reps-container">
-            <div
-              className="flex mr-5"
-            >
+            <div className="flex items-center mr-5 space-x-4">
               <Input
                 defaultValue={set.value}
                 saveChanges={saveChanges}
@@ -52,9 +50,7 @@ const ExerciseCard = ({ exercise }) => {
               />
               <p className="text-white">Sets</p>
             </div>
-            <div
-              className="flex mr-5"
-            >
+            <div className="flex items-center mr-5 space-x-4">
               <Input
                 defaultValue={set.rep.value}
                 saveChanges={saveChanges}
@@ -63,9 +59,7 @@ const ExerciseCard = ({ exercise }) => {
               />
               <p className="text-white">Reps</p>
             </div>
-            <div
-              className="flex mr-5"
-            >
+            <div className="flex items-center mr-5 space-x-4">
               <Input
                 defaultValue={set.weight}
                 saveChanges={saveChanges}

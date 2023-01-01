@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom'
+import { useParams } from "react-router-dom";
+import LoadingSpinner from "../../components/LoadingSpinner";
 import ExercisesContainer from "../../components/show-workout/ExercisesContainer";
 
 const Show = () => {
   const params = useParams();
   const [workout, setWorkout] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchWorkoutAdditionalData = async () => {
+    setIsLoading(true);
     //TODO:Dynamic user
     const response = await fetch(
       `http://127.0.0.1:3000/workout/${params.id}/user/1`
@@ -14,6 +17,7 @@ const Show = () => {
 
     const body = await response.json();
     setWorkout(body.workout);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -21,14 +25,17 @@ const Show = () => {
   }, []);
 
   return (
-    //TODO: Add loading state
-
-    <div className="container-full">
-      <p>{ workout.name }</p>
-      <ExercisesContainer
-        workoutExercises={workout.exercises}
-      />
-    </div>
+    <>
+      {isLoading && (
+        <div className="container-center">
+          <LoadingSpinner />
+        </div>
+      )}
+      <div className="container-full">
+        <p className="text-white text-lg text-center mb-5">{workout.name}</p>
+        <ExercisesContainer workoutExercises={workout.exercises} />
+      </div>
+    </>
   );
 };
 
