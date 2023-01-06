@@ -26,7 +26,7 @@ func HandleUpdateWorkoutRequest(c *gin.Context) {
 	}
 
 	if rb.SetID != 0 && rb.Weight != 0 {
-		//je to set a jedna sa o zmenu vahy
+		//jedna sa o zmenu vahy
 		var set models.Set
 		initializers.DB.First(&set, rb.SetID)
 		initializers.DB.Model(&set).Update("weight", rb.Weight)

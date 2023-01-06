@@ -8,13 +8,17 @@ import (
 
 func Register(c *gin.Context) {
 	response.SetReponseHeaders(c)
-	err := requests.StoreUserRequest(c)
 
-	if err == nil {
-		test := c.Request.Body
+	messages := requests.StoreUserRequest(c)
+
+	if len(messages) != 0 {
+	 c.JSON(200, gin.H{
+			"messages": messages,
+		})
+    return
+	}
 
 		c.JSON(200, gin.H{
-			"body": test,
+			"message": "All good",
 		})
-	}
 }

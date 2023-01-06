@@ -7,12 +7,12 @@ import (
 )
 
 type storeUserRequest struct {
-	Name     string `json:"name"`
+	Username     string `json:"username"`
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
-func StoreUserRequest(c *gin.Context) error {
+func StoreUserRequest(c *gin.Context) map[string]string {
 	var r storeUserRequest
 	err := c.BindJSON(&r)
 
@@ -20,33 +20,19 @@ func StoreUserRequest(c *gin.Context) error {
 		panic(err)
 	}
 
-	if r.Name == "" {
-		c.JSON(403, gin.H{
-			"meessage": "Name cannot be empty",
-		})
-		return gin.Error{}
-	} else if len(r.Name) < 3 {
-		c.JSON(403, gin.H{
-			"meessage": "Name cannot be shorter than 3 characters",
-		})
+  messages := make(map[string]string); 
 
-		return gin.Error{}
+	if r.Username == "" {
+    messages["name"] = "Name cannot be empty"
+	} else if len(r.Username) < 3 {
+    messages["name"] = "Name has to be longer than 3 characters"
 	} else if _, err := mail.ParseAddress(r.Email); err != nil {
-		c.JSON(403, gin.H{
-			"meessage": "Email must be in valid format",
-		})
-		return gin.Error{}
+    messages["email"] = "Email has to be valid"
 	} else if r.Password == "" {
-		c.JSON(403, gin.H{
-			"meessage": "Password cannot be empty",
-		})
-		return gin.Error{}
+    messages["password"] = "Password cannot be empty"
 	} else if len(r.Password) > 6 {
-		c.JSON(403, gin.H{
-			"meessage": "Password cannot be shorter than 6 characters",
-		})
-		return gin.Error{}
+    messages["password"] = "Password cannot be shorter than 6 characters"
 	}
 
-	return nil
+  return messages 
 }

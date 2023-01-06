@@ -6,6 +6,8 @@ import (
 	"gorm.io/gorm"
 )
 
+//TODO: maybe separte these to their dedicated files?
+
 type Model struct {
 	ID        uint            `gorm:"primaryKey;type:int(10)" json:"id,omitempty"`
 	CreatedAt *time.Time      `gorm:"type:timestamp" json:"created_at,omitempty"`
