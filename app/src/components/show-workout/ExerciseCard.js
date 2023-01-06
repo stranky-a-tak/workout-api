@@ -17,7 +17,7 @@ const ExerciseCard = ({ exercise }) => {
     const setId = isRep === false ? id : 0;
     const weight = parseInt(isWeight === true ? e.target.value : 0);
 
-    //TODO: Do something with the response
+    //TODO: Do something with the response also remove the no cors mode and handle it on the backend
     const response = await fetch(
       `http://127.0.0.1:3000/workout/${exercise.workout_id}/user/1`,
       {
