@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"github.com/MiroslavZaprazny/workout-tracker/api/initializers"
-	"github.com/MiroslavZaprazny/workout-tracker/api/models"
+	"github.com/stranky-a-tak/workout-tracker/api/initializers"
+	"github.com/stranky-a-tak/workout-tracker/api/models"
 )
 
 func generateFilters(id string) (workouts []models.Workout) {
