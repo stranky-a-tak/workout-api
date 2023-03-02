@@ -1,5 +1,5 @@
 package request
 
 type Request interface {
-    validate()
+    validate()map[string]string
 }

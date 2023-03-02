@@ -17,31 +17,33 @@ type updateWorkoutRequest struct {
 }
 
 func (rb updateWorkoutRequest) validate() {
-	if rb.SetID != 0 && rb.Weight != 0 {
-		//jedna sa o zmenu vahy
-		var set models.Set
-		initializers.DB.First(&set, rb.SetID)
-		initializers.DB.Model(&set).Update("weight", rb.Weight)
-	} else if rb.SetID != 0 && rb.Weight == 0 {
-		//je to set a jedna sa o zmenu value setu
-		var set models.Set
-		initializers.DB.First(&set, rb.SetID)
-		initializers.DB.Model(set).Update("value", rb.Value)
-	} else {
-		//je to rep a jedna sa o zmenu value repu
-		var rep models.Rep
-		initializers.DB.First(&rep, rb.RepID)
-		initializers.DB.Model(&rep).Update("value", rb.Value)
-	}
+	//some validation
 }
 
 func HandleUpdateWorkoutRequest(c *gin.Context) {
-	var rb updateWorkoutRequest
+	var request updateWorkoutRequest
 
-	err := c.BindJSON(&rb)
+	err := c.BindJSON(&request)
 
 	if err != nil {
 		panic(err)
 	}
-	updateWorkoutRequest.validate()
+
+	//TODO: this is ugly af, def candidate for refactor
+	if request.SetID != 0 && request.Weight != 0 {
+		//update weith
+		var set models.Set
+		initializers.DB.First(&set, request.SetID)
+		initializers.DB.Model(&set).Update("weight", request.Weight)
+	} else if request.SetID != 0 && request.Weight == 0 {
+		//update set
+		var set models.Set
+		initializers.DB.First(&set, request.SetID)
+		initializers.DB.Model(set).Update("value", request.Value)
+	} else {
+		//update rep
+		var rep models.Rep
+		initializers.DB.First(&rep, request.RepID)
+		initializers.DB.Model(&rep).Update("value", request.Value)
+	}
 }
