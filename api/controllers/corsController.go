@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"github.com/MiroslavZaprazny/workout-tracker/api/response"
-	"github.com/gin-gonic/gin"
+      "github.com/stranky-a-tak/workout-tracker/api/response"
+      "github.com/gin-gonic/gin"
 )
 
 func HandleOptionsRequest(c *gin.Context) {

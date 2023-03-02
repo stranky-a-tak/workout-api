@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"github.com/MiroslavZaprazny/workout-tracker/api/request"
-	"github.com/MiroslavZaprazny/workout-tracker/api/response"
+	"github.com/stranky-a-tak/workout-tracker/api/request"
+	"github.com/stranky-a-tak/workout-tracker/api/response"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,7 +16,7 @@ func Register(c *gin.Context) {
 			"messages": messages,
 		})
 
-		return
+	 return
 	}
 
 	c.JSON(200, gin.H{

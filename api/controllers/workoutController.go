@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	"github.com/MiroslavZaprazny/workout-tracker/api/initializers"
-	"github.com/MiroslavZaprazny/workout-tracker/api/models"
-	"github.com/MiroslavZaprazny/workout-tracker/api/requests"
-	"github.com/MiroslavZaprazny/workout-tracker/api/response"
+	"github.com/stranky-a-tak/workout-tracker/api/initializers"
+	"github.com/stranky-a-tak/workout-tracker/api/models"
+	"github.com/stranky-a-tak/workout-tracker/api/request"
+	"github.com/stranky-a-tak/workout-tracker/api/response"
 	"github.com/gin-gonic/gin"
 )
 
@@ -60,7 +60,7 @@ func WorkoutFilter(c *gin.Context) {
 func WorkoutUpdate(c *gin.Context) {
 	response.SetReponseHeaders(c)
 
-	requests.HandleUpdateWorkoutRequest(c)
+	request.HandleUpdateWorkoutRequest(c)
 
 	c.JSON(200, gin.H{
 		"message": "You have successfully updated your workout!",

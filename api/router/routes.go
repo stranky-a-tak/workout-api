@@ -1,13 +1,19 @@
-package routes
+package router
 
 import (
-	"github.com/MiroslavZaprazny/workout-tracker/api/controllers"
+	"github.com/stranky-a-tak/workout-tracker/api/controllers"
 	"github.com/gin-gonic/gin"
 )
 
-func RegisterRoutes() *gin.Engine {
+func InitializeRouter() {
 	r := gin.Default()
+
+	registerRoutes(r)
+	r.Run()
 	//TODO: figure out a way to better group these
+}
+
+func registerRoutes(r *gin.Engine) {
 	workoutRoutes := r.Group("/workouts")	
 	workoutRoutes.GET("/user/:id", controllers.WorkoutIndex)
 	workoutRoutes.GET("/user/:id/filter/:name", controllers.WorkoutFilter)
@@ -16,6 +22,4 @@ func RegisterRoutes() *gin.Engine {
 
 	r.OPTIONS("register", controllers.HandleOptionsRequest)
 	r.POST("register", controllers.Register)
-
-	return r
 }

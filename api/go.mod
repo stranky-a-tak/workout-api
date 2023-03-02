@@ -1,4 +1,4 @@
-module github.com/MiroslavZaprazny/workout-tracker/api
+module github.com/stranky-a-tak/workout-tracker/api
 
 go 1.19
 

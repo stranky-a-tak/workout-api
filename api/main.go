@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/MiroslavZaprazny/workout-tracker/api/initializers"
-	"github.com/MiroslavZaprazny/workout-tracker/api/routes"
+	"github.com/stranky-a-tak/workout-tracker/api/initializers"
+	"github.com/stranky-a-tak/workout-tracker/api/router"
 )
 
 func init() {
@@ -11,5 +11,6 @@ func init() {
 }
 
 func main() {
-	routes.RegisterRoutes();
+	// roter.InitializeRouter();
+	router.InitializeRouter()
 }
