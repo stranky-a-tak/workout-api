@@ -1,4 +1,4 @@
-package requests
+package request
 
 import (
 	"github.com/MiroslavZaprazny/workout-tracker/api/initializers"
@@ -16,15 +16,7 @@ type updateWorkoutRequest struct {
 	Value      uint `json:"value"`
 }
 
-func HandleUpdateWorkoutRequest(c *gin.Context) {
-	var rb updateWorkoutRequest
-
-	err := c.BindJSON(&rb)
-
-	if err != nil {
-		panic(err)
-	}
-
+func (rb updateWorkoutRequest) validate() {
 	if rb.SetID != 0 && rb.Weight != 0 {
 		//jedna sa o zmenu vahy
 		var set models.Set
@@ -41,4 +33,15 @@ func HandleUpdateWorkoutRequest(c *gin.Context) {
 		initializers.DB.First(&rep, rb.RepID)
 		initializers.DB.Model(&rep).Update("value", rb.Value)
 	}
+}
+
+func HandleUpdateWorkoutRequest(c *gin.Context) {
+	var rb updateWorkoutRequest
+
+	err := c.BindJSON(&rb)
+
+	if err != nil {
+		panic(err)
+	}
+	updateWorkoutRequest.validate()
 }
